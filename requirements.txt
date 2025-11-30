@@ -1,8 +1,0 @@
-torch
-torchvision
-transformers
-accelerate
-opencv-python
-yt-dlp
-pillow
-numpy
