@@ -65,10 +65,9 @@ Point clouds can be viewed in software like MeshLab, Blender, or CloudCompare.
 
 ## 📦 Dependencies
 
-The notebook automatically installs all required packages:
+The notebook automatically installs all required packages (PyTorch is pre-installed in Colab):
 
-- `torch` - Deep learning framework
-- `transformers` - Hugging Face model loading
+- `transformers` (from source) - Hugging Face model loading
 - `accelerate` - Optimized inference
 - `opencv-python` - Video processing
 - `yt-dlp` - YouTube/URL video downloading
