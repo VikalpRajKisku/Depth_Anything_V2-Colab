@@ -1,67 +1,74 @@
-# Depth Anything V2 - Colab Video Processor
+# Depth Anything V2 - Pro Video Processor
 
-A professional implementation of monocular depth estimation for video, optimized for Google Colab stability and performance.
+A professional, robust, and hardware-agnostic implementation of monocular depth estimation for video. Optimized for Google Colab but compatible with local CPU/GPU environments.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VikalpRajKisku/Depth_Anything_V2-Colab/blob/main/depth_launcher.ipynb)
 
+## ✨ Key Features
+
+- **🚀 Hardware Agnostic**: Automatically detects and uses **GPU (CUDA)** with FP16 acceleration for speed, or safely falls back to **CPU** for compatibility.
+- **📏 Dual Modes**:
+  - **Relative Depth**: Best for artistic visuals and creative effects.
+  - **Metric Depth**: Estimates absolute distance (in meters) using specialized models.
+- **🧊 3D Snapshots**: Export high-quality **3D Point Clouds (.ply)** from any specific frame in the video without generating massive files.
+- **🛡️ Robust Engine**: Built-in memory management, flicker reduction (smoothing), and high-quality FFmpeg encoding.
+- **⚡ Single-File Architecture**: All logic is contained within `depth_launcher.ipynb` - no external scripts required.
+
 ## ⚙️ Configuration Options
 
-### Model Sizes
+### Model Types
 
-| Size    | Description                       |
-| ------- | --------------------------------- |
-| `small` | Fastest, lower memory usage       |
-| `base`  | Balanced performance              |
-| `large` | Best quality, higher memory usage |
+| Type       | Description                                                             |
+| :--------- | :---------------------------------------------------------------------- |
+| `Relative` | Standard visual depth map. Good for general video effects.              |
+| `Metric`   | Absolute depth estimation. Good for measurements and 3D reconstruction. |
+
+### Model Sizes (Relative Mode)
+
+| Size    | Description                        |
+| :------ | :--------------------------------- |
+| `small` | Fastest, lower memory usage.       |
+| `base`  | Balanced performance.              |
+| `large` | Best quality, higher memory usage. |
 
 ### Resolutions
 
-| Option   | Description                                   |
-| -------- | --------------------------------------------- |
-| `Native` | Original video resolution                     |
-| `720p`   | HD resolution                                 |
-| `480p`   | Standard definition (recommended for T4 GPUs) |
-| `360p`   | Fastest processing                            |
+| Option   | Description                                  |
+| :------- | :------------------------------------------- |
+| `Native` | Original video resolution.                   |
+| `720p`   | HD resolution.                               |
+| `480p`   | Standard definition (Recommended for speed). |
+| `360p`   | Fastest processing.                          |
 
-### Colormaps
+## 🛠️ Installation (Local)
 
-| Option    | Description               |
-| --------- | ------------------------- |
-| `gray`    | Grayscale depth map       |
-| `inferno` | Warm color gradient       |
-| `magma`   | Purple to yellow gradient |
-| `jet`     | Rainbow color gradient    |
-| `turbo`   | Improved rainbow gradient |
+Since this is a single-notebook solution, you can simply run the notebook in Jupyter or VS Code.
 
-## 🛠️ Installation (Local Dev)
+1.  **Clone the repository:**
 
-If you want to run this on your own machine:
+    ```bash
+    git clone https://github.com/VikalpRajKisku/Depth_Anything_V2-Colab.git
+    cd Depth_Anything_V2-Colab
+    ```
 
-```bash
-git clone https://github.com/VikalpRajKisku/Depth_Anything_V2-Colab.git
-cd Depth_Anything_V2-Colab
-pip install -r requirements.txt
-python depth_engine.py --help
-```
+2.  **Open `depth_launcher.ipynb`** in your preferred notebook environment.
+
+3.  **Run the cells** sequentially. The notebook handles dependency installation automatically.
 
 ## 📂 Project Structure
 
-| File                   | Description                                                   |
-| ---------------------- | ------------------------------------------------------------- |
-| `depth_engine.py`      | The core logic class. Handles inference and video processing. |
-| `colab_notebook.py`    | The User Interface module imported by the launcher.           |
-| `depth_launcher.ipynb` | The entry point for Colab users.                              |
-| `requirements.txt`     | Python dependencies.                                          |
+| File                   | Description                                                      |
+| :--------------------- | :--------------------------------------------------------------- |
+| `depth_launcher.ipynb` | **The Core.** Contains the Engine, UI, and all processing logic. |
 
 ## 📦 Dependencies
 
-- `torch` & `torchvision` - Deep learning framework
-- `transformers` - Hugging Face model loading
-- `accelerate` - Optimized inference
-- `opencv-python` - Video processing
-- `yt-dlp` - YouTube video downloading
-- `pillow` - Image processing
-- `numpy` - Numerical computations
+The notebook automatically installs:
+
+- `transformers`, `accelerate`, `torch` (Deep Learning)
+- `opencv-python` (Video Processing)
+- `yt-dlp` (Video Downloading)
+- `pillow`, `numpy` (Image Ops)
 
 ## 🙏 Acknowledgments
 
